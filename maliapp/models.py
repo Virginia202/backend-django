@@ -119,7 +119,7 @@ class Profile (models.Model):
     def delete_profile(self):
         self.delete()
         
-class post(models.Model):
+class Post(models.Model):
     item = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     contact = models.CharField(max_length=100)
