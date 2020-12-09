@@ -52,16 +52,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField( default=False)
-    avatar = CloudinaryField('avatar', null=True, blank=True)
+    photo = CloudinaryField('photo', null=True, blank=True)
 
-     USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
     objects = UserManager()
 
-    def__str__(self):
+    def __str__(self):
 
-    return self.email
+        return self.email
 
     @property
     def get_full_name(self):
@@ -97,7 +97,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         token = jwt.encode(
             {
                 'user_data': user_details,
-                'exp': datetime.now() + timedelta(hours=24)
+                'exp': datetime.now() + timedelta(hours=72)
             }, settings.SECRET_KEY, algorithm='HS256'
             )
         return token.decode('utf-8')
@@ -109,7 +109,8 @@ class Profile (models.Model):
     email = models.CharField(max_length=100)
     status = models.BooleanField()
     location = models.CharField(max_length=100)
-    image = CloudinaryField('Profile pic', default = 'profile.jpg')
+    contact = models.CharField(max_length=200, blank=True)
+    profile_pic = CloudinaryField('Profile pic', default = 'profile.jpg')
     
     def __str__(self):
         return f'{self.user.username} Profile'
