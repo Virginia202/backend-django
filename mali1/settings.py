@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'bootstrap3',
+    'knox'
+    
 ]
 
 MIDDLEWARE = [
@@ -166,11 +168,11 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'maliapp.User'
 
-REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'authors.apps.core.exceptions.core_exception_handler',
-    'NON_FIELD_ERRORS_KEY': 'error',
+# REST_FRAMEWORK = {
+#     'EXCEPTION_HANDLER': 'authors.apps.core.exceptions.core_exception_handler',
+#     'NON_FIELD_ERRORS_KEY': 'error',
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'authors.apps.authentication.backends.JWTAuthentication',
-    ),
-}
+#     # # 'DEFAULT_AUTHENTICATION_CLASSES': (
+#     # #     'authors.apps.authentication.backends.JWTAuthentication',
+#     # ),
+# }

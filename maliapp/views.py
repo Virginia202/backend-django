@@ -3,12 +3,10 @@ from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-from .renderers import UserJSONRenderer
-from .serializers import (
-    LoginSerializer, RegistrationSerializer, UserSerializer
-)
-
+from rest_framework import viewsets
+from .renderer import UserJSONRenderer
+from .serializer import *
+from .models import *
 
 class RegistrationAPIView(APIView):
     permission_classes = (AllowAny,)

@@ -1,11 +1,19 @@
-from django.urls import path
+from django.urls import path,include
 
-from .views import (
-    LoginAPIView, RegistrationAPIView, UserRetrieveUpdateAPIView
-)
+from .views import *
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register('api/profile',ProfileViewSet)
+router.register('api/user', UserViewSet)
+router.register('api/post', PostViewSet)
+
 
 urlpatterns = [
-    path('user/', UserRetrieveUpdateAPIView.as_view()),
-    path('users/', RegistrationAPIView.as_view()),
-    path('users/login/', LoginAPIView.as_view()),
+    path('users/', RegistrationAPIView.as_view(),name='RegistrationAPIView'),
+    path('users/login/', LoginAPIView.as_view(),name='LoginAPIView'),
+    path('User/', UserRetrieveUpdateAPIView.as_view(),name='UserRetrieveUpdateAPIView'),
+    path('',include(router.urls))
+    
 ]

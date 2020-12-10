@@ -85,9 +85,9 @@ class LoginSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('id', 'name', 'email', 'status', 'image','user','location','contact')
+        fields = ('id', 'name', 'email', 'status', 'profile_pic','user','location','contact')
         
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = post
+        model = Post
         fields = ('item','location','contact','date_posted')
