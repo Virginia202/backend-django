@@ -107,7 +107,7 @@ class Profile (models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     email = models.CharField(max_length=100)
-    status = models.BooleanField()
+    # status = models.BooleanField()
     location = models.CharField(max_length=100)
     contact = models.CharField(max_length=200, blank=True)
     profile_pic = CloudinaryField('Profile pic', default = 'profile.jpg')
